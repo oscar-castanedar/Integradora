@@ -18,6 +18,15 @@ class User extends Authenticatable
      * Fecha: 17-03-2021
      * @var array
      */
+    
+    /**
+     * Autor: Jorge Etzel Perez Magallon
+     * Descripcion: Modelo para ingresar con sus datos registrados.
+     * Funcionalidad: Validar la sesion con la base de datos del sistema
+     * Fecha: 18-03-2021
+     * Nota:Se habian agregado anteriormente pero se borro.
+     */
+    
     protected $collection = 'usuarios';
     protected $primaryKey = '_id';
     protected $fillable = [
