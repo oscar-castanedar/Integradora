@@ -3,15 +3,15 @@ namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 /**
- * Descripción: Administración que crea periodos
- * Funcionalidad: Crear nuevos periodos.
+ * Descripción: Administración de periodos
+ * Funcionalidad: Administrar nuevos periodos.
  * Autor: Rodríguez Flores Raúl Alberto
  * Fecha: 17/03/2021
  */
 
 class Periodo extends Eloquent{
 	protected $connection = 'mongodb';
-	protected $collection = 'periodo';
+	protected $collection = 'Periodo';
 
 
     /**
@@ -20,6 +20,9 @@ class Periodo extends Eloquent{
      * @var array
      */
     protected $fillable = [
-        'nombre_periodo','fecha_inicio','fecha_fin','status_periodo'
+        'nombre_periodo',
+        'fecha_inicio',
+        'fecha_fin',
+        'status_periodo'
     ];
 }
