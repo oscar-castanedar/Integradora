@@ -22,7 +22,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 */
 class Curso extends Eloquent{
 	protected $connection = 'mongodb';
-	protected $collection = 'cursos';
+	protected $collection = 'Curso';
 
 
     /**
