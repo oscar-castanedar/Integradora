@@ -5,14 +5,13 @@ namespace App\Models;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 /**
- * Descripcion: Adminiistrador de Aginatura
+ * Descripcion: Administrador de Asignatura
  * Autor: Eduardo Galindo Arellano  
  * Fecha: 17/03/2021
  */
-
  class Asignatura extends Eloquent{
      protected $connection = 'mongodb';
-     protected $collection = 'asignatura';
+     protected $collection = 'Asignatura';
 
      /**
       * The attributes that are mass assigmable.
@@ -22,11 +21,12 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
       protected $fillable = [
           'carrera',
-          'horas',
+          'tipo',
+          'horas_semana',
           'semestre',
           'descripcion',
           'temario',
-          'nombre_Asig',
+          'nombre_Asignatura',
           'competencias'
       ];
 
