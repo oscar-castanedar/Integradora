@@ -13,7 +13,8 @@ class User extends Authenticatable
 
     /**
      * Autor: Brayan Mares Bueno
-     * Descripcion: Modelo para registrar usuarios.
+     * Descripcion: Modelo para registrar a los participantes.
+     * Funcionalidad: Registrar en la base de datos a los usuaros.
      * Fecha: 17-03-2021
      * @var array
      */
