@@ -8,9 +8,9 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 * Fecha: 17/03/2021
 */
 
-class Banco extends Eloquent{
+class Pregunta extends Eloquent{
 	protected $connection = 'mongodb';
-	protected $collection = 'preguntas';
+	protected $collection = 'pregunta';
 
 
     /**
@@ -21,10 +21,10 @@ class Banco extends Eloquent{
     protected $fillable = [
         'descripcion',
         'tipo',
-        'rutaImagen',
+        'ruta_imagen',
         'puntaje',
         'retroalimentacion',
-        'opcionResp',
+        'opcion_respuesta',
 
     ];
 }
