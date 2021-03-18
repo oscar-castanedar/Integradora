@@ -7,9 +7,9 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 * Autor: José Guillermo Balderas Zamora
 * Fecha: 17/03/2021
 */
-class CalificaActividad extends Eloquent{
+class UsuarioActividad extends Eloquent{
 	protected $connection = 'mongodb';
-	protected $collection = 'actividad_calificacion';
+	protected $collection = 'usuario_actividad';
 
 
     /**
@@ -22,4 +22,12 @@ class CalificaActividad extends Eloquent{
         'retroalimentacion',
         'fecha_envio',
     ];
+    
+    public function usuario() {
+        return $this->belongsTo(User::class);
+    }
+    
+    public function actividad() {
+        return $this->belongsTo(Actividad::class);
+    }
 }
