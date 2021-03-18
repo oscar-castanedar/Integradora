@@ -19,6 +19,10 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 * Funcionalidad: Ver y / o editar el curso, una vez que este ya haya sido creado.
 * Autor: Cabello Salas Juan Carlos.
 * Fecha: 17/03/2020
+* Descripción: Vizualizar el curso en la pantalla docente.
+* Funcionalidad: Ver y / o activar cursos.
+* Autor: Marn Reyes Saul Guadalupe.
+* Fecha: 18/03/2020
 */
 class Curso extends Eloquent{
 	protected $connection = 'mongodb';
