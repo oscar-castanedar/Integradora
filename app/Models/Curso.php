@@ -22,7 +22,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 */
 class Curso extends Eloquent{
 	protected $connection = 'mongodb';
-	protected $collection = 'Curso';
+	protected $collection = 'curso';
 
 
     /**
@@ -31,11 +31,18 @@ class Curso extends Eloquent{
      * @var array
      */
     protected $fillable = [
-        'nombre_curso',
-        'no_parcial',
+        'nombre_curso',        
         'activado',
         'estado_curso',
         'resumen_curso',
         'fecha',
     ];
+    
+    public function periodo() {
+        return $this->belongsTo(Periodo::class);
+    }
+    
+    public function parcial() {
+        return $this->belongsTo(Parcial::class);
+    }
 }
