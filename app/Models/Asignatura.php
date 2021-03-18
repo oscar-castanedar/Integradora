@@ -11,7 +11,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
  */
  class Asignatura extends Eloquent{
      protected $connection = 'mongodb';
-     protected $collection = 'Asignatura';
+     protected $collection = 'asignatura';
 
      /**
       * The attributes that are mass assigmable.
