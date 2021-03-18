@@ -10,7 +10,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Actividad extends Eloquent{
 	protected $connection = 'mongodb';
-    protected $collection = 'actividad';
+    protected $collection = 'Actividad';
 
     protected $fillable = [
         'estatus_calificacion',
