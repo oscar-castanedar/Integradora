@@ -26,6 +26,13 @@ class User extends Authenticatable
      * Fecha: 18-03-2021
      * Nota:Se habian agregado anteriormente pero se borro.
      */
+    /**
+     * Autor: Marin Reyes Saul Guadalupe
+     * Descripcion: Modelo para recuperar contraseña.
+     * Funcionalidad: Recupera la contraseña de un usuario existente en la base de datos
+     * Fecha: 19-03-2021
+     * Nota:Se habian agregado anteriormente pero se borro.
+     */
     
     protected $collection = 'usuarios';
     protected $primaryKey = '_id';
