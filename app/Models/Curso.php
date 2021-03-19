@@ -23,6 +23,10 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 * Funcionalidad: Ver y / o activar cursos.
 * Autor: Marn Reyes Saul Guadalupe.
 * Fecha: 18/03/2020
+* Descripción: Vizualizar el curso en la pantalla alumno.
+* Funcionalidad: Listar los cursos del alumno.
+* Autor: Lopez Cortes Adan.
+* Fecha: 18/03/2020
 */
 class Curso extends Eloquent{
 	protected $connection = 'mongodb';
