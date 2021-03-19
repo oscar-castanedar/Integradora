@@ -33,6 +33,13 @@ class User extends Authenticatable
      * Fecha: 19-03-2021
      * Nota:Se habian agregado anteriormente pero se borro.
      */
+    /**
+     * Autor: Zárate Rivera Ángela Alejandra
+     * Descripcion: Modelo para consultar el nombre y estatus del usuario.
+     * Funcionalidad: Consultar el nombre y cambiar el estatus de los usarios.
+     * Fecha: 19-03-2021
+     * Nota: Ya lo había agregado, pero fue eliminado.
+     */
     
     protected $collection = 'usuarios';
     protected $primaryKey = '_id';
