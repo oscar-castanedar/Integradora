@@ -18,10 +18,10 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 * Autor:Isaac Gamaliel Muñiz Amaro
 * Fecha:17/03/2021
 
-* Descripción: Vizualizar el curso en la pantalla alumno.
-* Funcionalidad: Listar los cursos del alumno.
-* Autor: Lopez Cortes Adan.
-* Fecha: 18/03/2020
+* Descripción: Mostras el perido activo en la pantalla alumno
+ * Funcionalidad: De acuerdo con el periodo se muestran los cursos activos
+ * Autor: Lopez Cortes Adan
+ * Fecha: 18/03/2021
 */
 
 class Progreso extends Eloquent{
