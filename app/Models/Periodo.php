@@ -16,6 +16,11 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
  * Funcionalidad: De acuerdo con el periodo se muestran los cursos activos
  * Autor: Lopez Cortes Adan
  * Fecha: 18/03/2021
+ 
+ * Descripción: Vizualizar el curso una que este ya haya sido creado y realizar modificaciones.
+* Funcionalidad: Ver y / o editar el curso, una vez que este ya haya sido creado.
+* Autor: Cabello Salas Juan Carlos.
+* Fecha: 19/03/2020.
  */
 
 class Periodo extends Eloquent{
