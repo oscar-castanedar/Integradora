@@ -11,6 +11,11 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
  * Funcionalidad: Mostrar los periodos activos y inactivos(solo se podra ver los curosos pero no se podra ingrear a ellos)
  * Autor: Marin Reyes Saul Guadalupe
  * Fecha: 18/03/2021
+ 
+ * Descripción: Mostras el perido activo en la pantalla alumno
+ * Funcionalidad: De acuerdo con el periodo se muestran los cursos activos
+ * Autor: Lopez Cortes Adan
+ * Fecha: 18/03/2021
  */
 
 class Periodo extends Eloquent{
