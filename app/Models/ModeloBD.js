@@ -121,6 +121,12 @@ notificacion({
     usuarios: [id_usuario]
 })
 
+leerNotificacion({
+    asunto:String,
+    fecha:Date,
+    status:String,
+})
+
 calificacion({
     id_usuario:String,
     examenes: [{
