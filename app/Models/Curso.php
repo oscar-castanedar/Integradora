@@ -40,7 +40,7 @@ class Curso extends Eloquent{
      */
     protected $fillable = [
         'nombre_curso',        
-        'activado',
+        'status',
         'estado_curso',
         'resumen_curso',
         'fecha',
