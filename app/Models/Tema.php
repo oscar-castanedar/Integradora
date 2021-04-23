@@ -9,10 +9,11 @@ class Tema extends Eloquent
 {
     use HasFactory;
     /**
-     * 
-     * @var array
-     * 
-     */
+    * Descripción: Administración de Tema
+    * Funcionalidad: Ver Tema
+    * Autor: Oscar David Castañeda Rivera
+    * Fecha: 16/03/2021
+    */
     protected $collection = 'tema';
     protected $fillable = [
         'id_curso',

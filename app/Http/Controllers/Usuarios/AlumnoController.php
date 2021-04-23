@@ -69,6 +69,7 @@ class AlumnoController extends Controller
         $parcial=Tema::where('id_curso','=',$id)->where('id_parcial','=',1)->get();
         $parcial2=Tema::where('id_curso','=',$id)->where('id_parcial','=',2)->get();
         $parcial3=Tema::where('id_curso','=',$id)->where('id_parcial','=',3)->get();
+        //Se hace una consulta a cada uno de los parciales de cada curso
         $parc=Parcial::where('id_curso','=',$id)->where('numero_parcial','=',1)->get();
         $parc1=Parcial::where('id_curso','=',$id)->where('numero_parcial','=',2)->get();
         $parc2=Parcial::where('id_curso','=',$id)->where('numero_parcial','=',3)->get();

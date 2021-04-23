@@ -133,6 +133,7 @@
 <br>
 
 <!-- Modal -->
+<!-- Vista modal del repaso del parcial 1 del curso -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -154,6 +155,7 @@
   </div>
 </div>
 
+<!-- Vista modal del repaso del parcial 2 del curso -->
 <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -175,6 +177,7 @@
   </div>
 </div>
 
+<!-- Vista modal del repaso del parcial 3 del curso -->
 <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
