@@ -103,27 +103,12 @@
             </select>
         </div>
     </div>
-    <div class="form-group">
-        <div class="input-group col-md-12 mb-2">
-            <div class="input-group-prepend">
-                 <div class="input-group-text">Subir foto 
-                     <input type="file" name="avatar"> </input>
-        </div>
 
     <div class="d-grid gap-2">
         <button class="btn btn-warning">Actualizar Datos</button>
     </div>
 
 </form>
-
-<div class="row mt-2">
-    <div class="col-6 mb-2 d-grid gap-2">
-        <button class="btn btn-warning">Actualizar Correo Electrónico</button>
-    </div>
-    <div class="col-6 mb-2 d-grid gap-2">
-        <button class="btn btn-warning">Actualizar Contraseña</button>
-    </div>
-</div>
 
 
 @endsection

@@ -37,13 +37,15 @@ Route::get('/recuperar-password', function () { //Ruta para la view de recuperar
 });
 
 //Rutas para administrador
-Route::group(['middleware' => 'soloadmin'], function() {
+Route::group(['middleware' => 'solodocente'], function() {
+
 });
 
 Route::group(['middleware' => 'auth'], function() {//Ruta para rutas globales que necesiten un inicio de sesión
    //Mi perfil
    Route::get('mi-perfil', [App\Http\Controllers\Usuarios\PerfilController::class,'index']);
    Route::put('actualizar/{_id}', [App\Http\Controllers\Usuarios\PerfilController::class,'update'])->name('actualizar');
+   Route::get('/pdf/{id}',[App\Http\Controllers\Usuarios\AlumnoController::class,'PDF'])->name('pdf');
 });
 
 
@@ -58,6 +60,9 @@ Route::post('login', [UsuarioController::class, 'login']);//Ruta para procesar e
 Route::get('/register/verify/{code}', [UsuarioController::class, 'verify']);//Ruta para enviar el correo de confirmación de email.
 Route::get('logout', [UsuarioController::class, 'logout']);//Ruta para  cerrar sesión.
 Route::get('/verCurso/{id}',[App\Http\Controllers\Usuarios\AlumnoController::class,'verCurso'])->name('verCurso');
+Route::get('/verCurso/{id}',[App\Http\Controllers\Usuarios\AlumnoController::class,'verCurso'])->name('verCurso');
+Route::get('/entregarActividad/{id}',[App\Http\Controllers\Usuarios\AlumnoController::class,'entregarActividad'])->name('entregarActividad');
+Route::post('/entregarActividad2',[App\Http\Controllers\Usuarios\AlumnoController::class,'entregarActividad2'])->name('entregarActividad2');
 
 
 

@@ -10,33 +10,58 @@
 <div class="row">
 <h1>Mis cursos</h1>
 <!--Card de mis cursos-->
-@foreach($mis_cursos as $mi_curso)<!--Bucle para recorrer los cursos-->
-    @if($mi_curso->estudiantes)<!--If para comprobar que el array de estudiantes existe y evitar errores-->
-      @foreach($mi_curso->estudiantes as $est)<!--Bucle anidado para recorrer los estudiantes de un curso-->
-          @if($est)<!--If para evitar errores en el Objeto "Cuando en el objecto no esta la estructura bien"-->
-            @if($est['email'] == Auth::user()->email) <!--If que comprueba que el email dentro de estudiantes sea igual al email del auth-->
-              <div class="col-md-2 col-sm-2 m-4" id="tooltip">
+@foreach($mis_cursos as $mi_curso)<!--Cilo para enlistar los cursos-->
+  @foreach($mi_curso['grupos'] as $nomGrupos)<!--Ciclo para recorrer los nombres del grupo dentro del curso -->
+    @if($nomGrupos)<!--If para comprobar que existe el array de los grupos en la coleción cursos-->
+     @foreach($grupos as $grupo)<!--Ciclo para reccorer la coleccion grupos-->
+      @foreach($grupo['alumnos'] as $alumnoGrupo)<!--Ciclo para recorrer los alumnos de la colección grupo-->
+        @if($grupo->nombre_grupo == $nomGrupos && $alumnoGrupo == Auth::user()->_id)<!--If para comprobar nombre grupo y el id del alumno-->
+        
+        <div class="col-md-2 col-sm-2 m-4" id="tooltip">
                 <div class="card card-block p-4">
                   <h5 class="card-title mt-3 mb-3"> {{$mi_curso->nombre_curso}}</h5>
-                  <span class="card-text lenguage">Inicio: {{$mi_curso->fecha_inicio_curso}}</span>
-                  <span class="card-text">Fin: {{$mi_curso->fecha_fin_curso}}</span>
-                  <ul class="list-group list-group-flush">
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{$est['progreso']}}%" aria-valuenow="{{$est['progreso']}}" aria-valuemin="0" aria-valuemax="100">{{$est['progreso']}}%</div>
-                      </div>
-                      <br>
-                      @if($mi_curso->status_curso == true)
-                        <a href="{{route('verCurso',$mi_curso->_id)}}" class="btn btn-warning btn-sm">Continuar...</a>
-                      @else
-                        <span class="badge bg-danger">Curso inactivo</span>
-                      @endif
-                  </ul>
+                  @foreach($periodos as $periodo)
+                    @if($periodo->nombre_periodo == $mi_curso->nombre_periodo)
+                      <span class="card-text lenguage">Inicio: {{$periodo->fecha_inicio}}</span>
+                      <span class="card-text">Fin: {{$periodo->fecha_fin}}</span>
+                    @endif
+                  @endforeach
+                  @php ($i = 1)
+                  @foreach($avance_curso as $avance)
+                    @if($avance->id_alumno === Auth::user()->_id && $mi_curso->_id === $avance->id_curso)
+                      @php ($i = 2)
+                      <ul class="list-group list-group-flush">
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: {{$avance->progreso}}%" aria-valuenow="{{$avance->progreso}}" aria-valuemin="0" aria-valuemax="100">{{$avance->progreso}}%</div>
+                          </div>
+                          <br>
+                              @if($mi_curso->status_curso == true && $avance->progreso <= 99)
+                                <a href="{{route('verCurso',$mi_curso->_id)}}" class="btn btn-warning btn-sm">Continuar...</a>
+                              @elseif($avance->progreso == 100)
+                                <a href="{{route('pdf',$mi_curso->_id)}}" class="btn btn-success btn-sm">Imprimir constancia</a>
+                              @else
+                                <span class="badge bg-danger">Curso inactivo</span>
+                              @endif
+                      </ul>
+                    @endif
+                  @endforeach
+
+                  @if($i < 2 && $mi_curso->status_curso == true)<!--If con la ayuda de una bandera para mostrar el boton y el curso en true-->
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div><br>
+                    <a href="{{route('verCurso',$mi_curso->_id)}}" class="btn btn-info btn-sm">Iniciar curso</a>
+                  @elseif($i < 2 && $mi_curso->status_curso == false)<!--If con la ayuda de una bandera y el curso en false-->
+                    <span class="badge bg-danger">Curso inactivo</span>
+                  @endif
+                  
                 </div>
-              </div>
-            @endif
-          @endif
+          </div>
+        @endif
       @endforeach
+     @endforeach
     @endif
+  @endforeach
 @endforeach
 </div>
 
@@ -101,7 +126,6 @@
       <ul class="list-group list-group-flush">
         <span class="card-text"><b><br>Lo que prendera</br></b>{{$curso->descripcion_curso}}</span>
         <br>
-          <a href="{{route('verCurso',$curso->_id)}}" class="btn btn-success btn-sm">Ver curso...</a>
         </li>
       </ul>
     </div>

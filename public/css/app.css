@@ -1,0 +1,45 @@
+.container {
+    background: white;
+}
+
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: dodgerblue;
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+ul.breadcrumb li + li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+ul.breadcrumb li a {
+    color: white;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: deepskyblue;
+}
+
+.subtitle,
+p {
+    color: gray;
+}

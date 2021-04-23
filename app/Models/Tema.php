@@ -15,7 +15,8 @@ class Tema extends Eloquent
      */
     protected $collection = 'tema';
     protected $fillable = [
-        'nombre_curso',
+        'id_curso',
+        'id_parcial',
         'nombre_tema'
     ];
 

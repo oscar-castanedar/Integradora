@@ -29,4 +29,8 @@ class DocenteController extends Controller
             return view('homeDocente');
         }
     }
+
+
+
+    
 }

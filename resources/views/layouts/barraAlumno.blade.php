@@ -13,30 +13,6 @@
         <a class="search_icon"><i class="fas fa-search"></i></a> 
         </div> 
       </form>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Mis cursos
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li>
-            <div class="dropdown-item" href="#">
-              <div class="card card border-warning ">
-                <div class="card-header">
-                  curso
-                </div>
-                <div class="card-body">
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                  </div>
-                  <a href="#" class="btn btn-warning btn-sm">Continuar...</a>
-                </div>
-              </div>
-            </div>
-
-          </li>
-        </ul>
-  
-      </li>
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
