@@ -7,6 +7,11 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 * Funcionalidad: Ver Parcial
 * Autor: Oscar David Castañeda Rivera
 * Fecha: 16/03/2021
+
+* Descripción:Generar filtros para califiaciones
+* Funcionalidad: Generar buscador para calificaciones
+* Autor: Isaac Gamaliel Muñiz Amaro
+* Fecha: 17/03/2021
 */
 class Parcial extends Eloquent{
 	protected $connection = 'mongodb';
@@ -19,8 +24,9 @@ class Parcial extends Eloquent{
      * @var array
      */
     protected $fillable = [
-        'nombre',
+        'nombre_carrera',
+        'repaso',
         'id_curso',
-        'id_parcial'
+        'id_examen',
     ];
 }

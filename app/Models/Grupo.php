@@ -17,5 +17,9 @@ class Grupo extends Eloquent
         'id_carrera',
         'alumnos'
     ];
-
+    //Funcion para filtro
+    public function scopeGrupos($query, $grupos){
+        if($grupos)
+        return $query->where('nombre_grupo',$grupos);
+    }
 }

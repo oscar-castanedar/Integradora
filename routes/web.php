@@ -64,6 +64,17 @@ Route::get('/verCurso/{id}',[App\Http\Controllers\Usuarios\AlumnoController::cla
 Route::get('/entregarActividad/{id}',[App\Http\Controllers\Usuarios\AlumnoController::class,'entregarActividad'])->name('entregarActividad');
 Route::post('/entregarActividad2',[App\Http\Controllers\Usuarios\AlumnoController::class,'entregarActividad2'])->name('entregarActividad2');
 
+//Rutas Administrador
+//Rutas para Generar pdf de calificaciones matutino y vespertino
+Route::get('rendimientoM',[App\Http\Controllers\Usuarios\AdminController::class,'rendimientoM'])->name('rendimientoM');
+Route::get('pdfM',[App\Http\Controllers\Usuarios\AdminController::class,'pdfM'])->name('pdfM');
+Route::get('rendimientoV',[App\Http\Controllers\Usuarios\AdminController::class,'rendimientoV'])->name('rendimientoV');
+Route::get('pdfV',[App\Http\Controllers\Usuarios\AdminController::class,'pdfV'])->name('pdfV');
+
+Route::get('perfil',[App\Http\Controllers\Usuarios\AdminController::class,'perfil'])->name('perfil');
+Route::get('/perfil/{id}/edit',[App\Http\Controllers\Usuarios\AdminController::class, 'editperfil'])->name('editperfil');
+Route::put('/perfil/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'update'])->name('update');
+
 
 
 
