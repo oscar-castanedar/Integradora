@@ -36,9 +36,11 @@
                           </div>
                           <br>
                               @if($mi_curso->status_curso == true && $avance->progreso <= 99)
-                                <a href="{{route('verCurso',$mi_curso->_id)}}" class="btn btn-warning btn-sm">Continuar...</a>
+                                <a href="{{route('verCurso',$mi_curso->_id)}}" class="btn btn-warning btn-sm">Continuar...</a><br>
+                                <a href="{{route('asistencia',$mi_curso->_id)}}" class="btn btn-warning btn-sm">Asisitencia</a>
                               @elseif($avance->progreso == 100)
-                                <a href="{{route('pdf',$mi_curso->_id)}}" class="btn btn-success btn-sm">Imprimir constancia</a>
+                                <a href="{{route('pdf',$mi_curso->_id)}}" class="btn btn-success btn-sm">Imprimir constancia</a><br>
+                                <a href="{{route('asistencia',$mi_curso->_id)}}" class="btn btn-warning btn-sm">Asisitencia</a>
                               @else
                                 <span class="badge bg-danger">Curso inactivo</span>
                               @endif

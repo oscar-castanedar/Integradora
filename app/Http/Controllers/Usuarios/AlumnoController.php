@@ -8,6 +8,8 @@ use App\Models\Curso;
 use App\Models\Grupo;
 use App\Models\Periodo;
 use App\Models\Tema;
+use App\Models\Token;
+use App\Models\Lista;
 use App\Models\Parcial;
 use App\Models\Actividad;
 use App\Models\AvanceCurso;
@@ -158,6 +160,47 @@ class AlumnoController extends Controller
         $apM=Auth::user()->segundo_apellido;
         $pdf=\PDF::loadView('layouts.alumno.constancia',['curso'=>$curso,'fecha'=>$date,'nombre'=>$nombre,'ap'=>$apP,'am'=>$apM]);
         return $pdf->setPaper('a4', 'landscape')->stream('Constancia.pdf');
+    }
+
+    public function asistenciaa(Request $request, Curso $id){//Funcion para cargar formulario para enviar token
+        $curso=Curso::find($id);
+        return view('layouts.alumno.formulario', compact('curso'));
+    }
+
+    public function asistenciaR(Request $request, Curso $id){//Funcio para registrar asistencia 
+        $codigo = $request['token'];
+        $curso = Curso::find($id);
+        $token = Token::all();
+        $lista = Lista::all();
+        $date = Carbon::now();
+        $date = $date->format('d-m-Y');
+        $hora = Carbon::now();
+        $hora = $hora->isoFormat('h:mm:ss a');
+        $a = Auth::user()->id;
+
+        foreach ($token as $tok) {//Recorrer los tokens 
+            foreach ($curso as $cur) {//recorrer el curso
+                if ($tok->curso == $cur->nombre_curso) {//verificar si el token correspone a el curso
+                    if ($tok->token == $codigo) {//verificar si el token ingresado es igual al generado
+                        if ($tok->hora_limite > $hora) {//verificar si la hora es menor a la hora limite del token
+                            if ($tok->fecha >= $date) {//verificar si la fecha es igual o menor a la fecha del token 
+                                Lista::create([
+                                    'alumno' => $a,
+                                    'token' => $request['token'],
+                                ]);
+                                return back()->with('error', 'Asistencia registrada');
+                            }else {
+                                return back()->with('error', 'Dia exedido');
+                            }
+                        }else{
+                            return back()->with('error', 'Hora ecxedida');
+                        }
+                    }else{
+                        return back()->with('error', 'Token erroneo');
+                    }
+                }
+            }
+        }
     }
 
     

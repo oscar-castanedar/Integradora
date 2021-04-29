@@ -31,6 +31,7 @@ Route::get('/', function () {
 Route::get('/administrador', [App\Http\Controllers\Usuarios\AdminController::class, 'index'])->name('admin');
 Route::get('/alumno/{nombre_periodo?}',[App\Http\Controllers\Usuarios\AlumnoController::class,'index'])->name('alumno');
 Route::get('/docente',[App\Http\Controllers\Usuarios\DocenteController::class,'index'])->name('docente');
+Route::get('/docente/{nombre_periodo?}',[App\Http\Controllers\Usuarios\DocenteController::class,'index'])->name('docente');
 
 Route::get('/recuperar-password', function () { //Ruta para la view de recuperar contraseña.
    return view('layouts.usuarios.email');
@@ -75,6 +76,48 @@ Route::get('perfil',[App\Http\Controllers\Usuarios\AdminController::class,'perfi
 Route::get('/perfil/{id}/edit',[App\Http\Controllers\Usuarios\AdminController::class, 'editperfil'])->name('editperfil');
 Route::put('/perfil/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'update'])->name('update');
 
+//Rutas para Docentes
+//Rutas para notificacion y token de lista
+Route::get('enviarNotificacion/{id}',[App\Http\Controllers\Usuarios\EnviosController::class,'enviarN'])->name('enviarNotificacion');//Ruta para cargar vista de envio de notificaciones
+Route::get('enviarFormulario/{id}',[App\Http\Controllers\Usuarios\EnviosController::class,'enviarF'])->name('enviarFormulario');//Ruta para cargar vista de envio pase lista
+Route::post('token/{id}/{idC}/{idG}',[App\Http\Controllers\Usuarios\EnviosController::class,'generarT'])->name('token');
+Route::get('tokenB/{id}/{idC}/{idG}',[App\Http\Controllers\Usuarios\EnviosController::class,'borrarT'])->name('tokenB');
+Route::get('lista/{id}/{idC}/{idG}',[App\Http\Controllers\Usuarios\EnviosController::class,'generarL'])->name('lista');
+Route::get('lis/{id}/{idC}/{idG}',[App\Http\Controllers\Usuarios\DocenteController::class,'generarU'])->name('lis');
+Route::post('crearNotificacion/{id}/{idC}/{idG}',[App\Http\Controllers\Usuarios\EnviosController::class,'enviar'])->name('crearNotificacion');
+Route::get('/asistencia/{id}',[App\Http\Controllers\Usuarios\AlumnoController::class,'asistenciaa'])->name('asistencia');
+Route::post('/asistencia/{id}',[App\Http\Controllers\Usuarios\AlumnoController::class,'asistenciaR'])->name('asistencia');
+
+//rutas para crear curso
+Route::get('/Curso',[App\Http\Controllers\Usuarios\DocenteController::class, 'Curso'])->name('Curso');
+Route::get('/agregarContenido',[App\Http\Controllers\Usuarios\DocenteController::class, 'agregarContenido'])->name('agregarContenido');
+Route::get('/agregarActividad',[App\Http\Controllers\Usuarios\DocenteController::class, 'agregarActividad'])->name('agregarActividad');
+Route::get('/agregarExTr',[App\Http\Controllers\Usuarios\DocenteController::class, 'agregarExTr'])->name('agregarExTr');
+Route::post('/crearCurso',[App\Http\Controllers\Usuarios\DocenteController::class, 'crearCurso'])->name('crearCurso');
+
+Route::get('/crearExam/{id}',[App\Http\Controllers\Usuarios\DocenteController::class, 'prueba1'])->name('crearExam');
+Route::get('/regreso/{id}',[App\Http\Controllers\Usuarios\DocenteController::class, 'regreso'])->name('/regreso');
+
+//rutas para editar el curso
+Route::get('/editarCurso/{id}',[App\Http\Controllers\Usuarios\DocenteController::class,'editarCurso'])->name('editarCurso');
+
+//rutas del examen
+Route::get('/examen/{idc}', [App\Http\Controllers\ExamenController::class,'index2'])->name('/examen');
+Route::get('/examen3', [App\Http\Controllers\ExamenController::class,'index'])->name('/examen');
+Route::post('/examenR', [App\Http\Controllers\ExamenController::class,'actu']);
+Route::get('/delete/{id}',[App\Http\Controllers\ExamenController::class,'Delete']);
+Route::get('/update/{id}/{idc}', [App\Http\Controllers\ExamenController::class,'edit']);
+Route::post('/crearExam', [App\Http\Controllers\ExamenController::class,'store']);
+
+//rutas de preguntas
+Route::post('/preguntas/{id}', [App\Http\Controllers\PreguntaController::class,'store']);
+Route::post('/preguntasl/{id}', [App\Http\Controllers\ExamenController::class,'capturar']);
+Route::get('/preguntaR/{id}/{idc}', [App\Http\Controllers\PreguntaController::class,'prueba']);
+Route::get('/pregunta',[App\Http\Controllers\PreguntaController::class,'index']);
 
 
+//
+Route::get('/status/update', [DocenteController::class, 'updateStatus'])->name('users.update.status');
+Route::get('/status-curso/{id}',[App\Http\Controllers\Usuarios\DocenteController::class, 'statuscurso'])->name('status-curso');
+Route::get('/status-curso1/{id}',[App\Http\Controllers\Usuarios\DocenteController::class, 'statuscurso1'])->name('status-curso1');
 

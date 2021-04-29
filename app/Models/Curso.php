@@ -11,9 +11,8 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 * Funcionalidad: Crear Curso
 * Autor: María Concepción Cárdenas Rincón
 * Fecha: 17/03/2021
-
-* Descripción:Generar filtros para califiaciones
-* Funcionalidad: Generar buscador para calificaciones
+* Descripción:Secuencia didáctica de actividades por parcial o total
+* Funcionalidad: Generar secuencia didáctica del curso
 * Autor: Isaac Gamaliel Muñiz Amaro
 * Fecha: 17/03/2021
 */
@@ -28,17 +27,12 @@ class Curso extends Eloquent{
      */
     protected $fillable = [
         'nombre_curso',
+        'asignatura',
         'nombre_periodo',
-        'fecha_inicio_curso',
-        'fecha_fin_curso',
         'status_curso',
+        'autor_curso',
         'resumen_curso',
         'descripcion_curso',
-        'estudiantes'
+        'grupos'
     ];
-    //Funcion para filtro
-    public function scopeCursos($query, $cursos){
-        if($cursos)
-        return $query->where('nombre_curso',$cursos);
-    }
 }

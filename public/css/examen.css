@@ -1,0 +1,34 @@
+
+
+ #cuerpo{
+  padding: 5px;
+  margin: 0;
+  background: #dfc6b2 ;
+
+}
+
+
+#card2{
+padding: 5px;
+margin: 0;
+
+background: aliceblue;
+
+}
+
+#intentos{
+  width: 150px;
+}
+
+#ponderacion{
+width: 100px;
+
+}
+
+.parcial{
+  
+  margin-top: 20px;
+  
+width: 300px;
+}
+

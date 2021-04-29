@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+#ab {
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: row;
+}
+
+img {
+	width : 22px;
+	height: 22px;
+	margin-right: 20px;
+}
+
+#b{
+	text-align: center;
+}
+
+#bac{
+	text-align: center;
+	margin-bottom: 5%;
+	margin-top: 15%;
+}
+
+#dac{
+	margin-right: 10%;
+}
+
+#d{
+	width: 97%;
+	
+}
+
+#ds{
+	display: inline-block;
+	
+}
+
+#act{
+	display: inline-block;
+	margin-left: 15%;
+}
+
+#dss{
+	display: inline-block;
+	margin-right: 30px;
+	margin-bottom: 5px;
+	margin-top: 2px;
+}
+
+#a{
+	width : 22px;
+	height: 22px;
+	display: inline-block;
+	float: right;
+}
+
+#a{
+	width : 22px;
+	height: 22px;
+	display: inline-block;
+}
+
+.asu{
+	margin-right: 15px;
+	margin-left: 20px;
+}
+
+#form { 
+	height: 300px; 
+	overflow-x: scroll; 
+	width: 100%; 
+}
+
+#principal{
+	background: #D6EAF8 ;
+}
+
+#principal2{
+	background: #EBF5FB;
+
+}
+#secundario{
+	background: #F9EBEA;
+}
+
