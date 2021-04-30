@@ -36,7 +36,7 @@
         <thead>
             <tr>
             <th scope="col">
-            <h2>Crear Examén</h2>
+            <h2>Crear Exámen</h2>
             </th>
             <th scope="col">
               
