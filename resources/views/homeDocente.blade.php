@@ -203,7 +203,7 @@
         </button>
       </div>
       <div class="modal-body">
-      @foreach($periodos as $periodo)
+      
       <form method="POST" action="{{route('crearCurso',['idperiodo'=>$periodo->id])}}" style=" font-weight:bold; padding:15px; border:5px solid #B34F19; margin-top:40px; margin-bottom:40px; text-align:center; font-size:22px; border-radius:10px;" action="https://gifthunterclub.com/ini/register" accept-charset="UTF-8" class="js-validation-signin"><input name="_token" type="hidden" value="ekV4HcXXxN80wMhDQkZDwp0J8eQFR8TDaHMn1l3B">
         @csrf
           <div class="row form-group ">
@@ -228,7 +228,7 @@
         <option value="{{$periodo->nombre_periodo}}">{{$periodo->nombre_periodo}}</option>
         @endif
       @endforeach
-      @endforeach
+      
             </select>
           </div>
           </div>
