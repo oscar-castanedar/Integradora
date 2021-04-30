@@ -24,9 +24,10 @@ class Parcial extends Eloquent{
      * @var array
      */
     protected $fillable = [
-        'nombre_carrera',
+        'numero_parcial',
+        'nombre_parcial',
         'repaso',
         'id_curso',
-        'id_examen',
+        'nombre_curso',
     ];
 }

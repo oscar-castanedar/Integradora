@@ -93,27 +93,34 @@ Route::get('/Curso',[App\Http\Controllers\Usuarios\DocenteController::class, 'Cu
 Route::get('/agregarContenido',[App\Http\Controllers\Usuarios\DocenteController::class, 'agregarContenido'])->name('agregarContenido');
 Route::get('/agregarActividad',[App\Http\Controllers\Usuarios\DocenteController::class, 'agregarActividad'])->name('agregarActividad');
 Route::get('/agregarExTr',[App\Http\Controllers\Usuarios\DocenteController::class, 'agregarExTr'])->name('agregarExTr');
-Route::post('/crearCurso',[App\Http\Controllers\Usuarios\DocenteController::class, 'crearCurso'])->name('crearCurso');
+Route::post('/crearCurso/{idperiodo}',[App\Http\Controllers\Usuarios\DocenteController::class, 'crearCurso'])->name('crearCurso');
 
-Route::get('/crearExam/{id}',[App\Http\Controllers\Usuarios\DocenteController::class, 'prueba1'])->name('crearExam');
-Route::get('/regreso/{id}',[App\Http\Controllers\Usuarios\DocenteController::class, 'regreso'])->name('/regreso');
+Route::get('/vistaExam/{id}/{idP}/{idparcial}',[App\Http\Controllers\Usuarios\DocenteController::class, 'vistaExam'])->name('vistaExam');//CON ESTA RUTA MANDAMOS A LA VISTA PRINCIPAL DEL EXAMEN INCLUYENDO EL ID DEL CURSO
+Route::get('/regreso/{id}/{idP}',[App\Http\Controllers\Usuarios\DocenteController::class, 'regresoParcial'])->name('/regreso');
 
 //rutas para editar el curso
 Route::get('/editarCurso/{id}',[App\Http\Controllers\Usuarios\DocenteController::class,'editarCurso'])->name('editarCurso');
 
 //rutas del examen
-Route::get('/examen/{idc}', [App\Http\Controllers\ExamenController::class,'index2'])->name('/examen');
-Route::get('/examen3', [App\Http\Controllers\ExamenController::class,'index'])->name('/examen');
-Route::post('/examenR', [App\Http\Controllers\ExamenController::class,'actu']);
-Route::get('/delete/{id}',[App\Http\Controllers\ExamenController::class,'Delete']);
-Route::get('/update/{id}/{idc}', [App\Http\Controllers\ExamenController::class,'edit']);
-Route::post('/crearExam', [App\Http\Controllers\ExamenController::class,'store']);
+
+Route::post('/examenR', [App\Http\Controllers\ExamenController::class,'actualizar']);//esta ruta nos manda a la funcion de actualizar 
+Route::get('/delete/{id}',[App\Http\Controllers\ExamenController::class,'Delete']);//esta ruts nos manda una funcion llamada delete 
+Route::get('/update/{id}/{idc}/{idparcial}/{idperiodo}', [App\Http\Controllers\ExamenController::class,'edit']);//ruta para editar examen
+Route::post('/crearExam', [App\Http\Controllers\ExamenController::class,'store']);//ruta para crear Examen
 
 //rutas de preguntas
-Route::post('/preguntas/{id}', [App\Http\Controllers\PreguntaController::class,'store']);
-Route::post('/preguntasl/{id}', [App\Http\Controllers\ExamenController::class,'capturar']);
-Route::get('/preguntaR/{id}/{idc}', [App\Http\Controllers\PreguntaController::class,'prueba']);
-Route::get('/pregunta',[App\Http\Controllers\PreguntaController::class,'index']);
+Route::post('/crearPreguntas', [App\Http\Controllers\PreguntaController::class,'store']);//esta nos manda a la funcion de crear preguntas.
+Route::get('/agregarPregu/{id}/{idc}/{idparcial}/{idperiodo}', [App\Http\Controllers\PreguntaController::class,'agregarPre']);//esta ruta nos manda a la página de pregunta
+Route::get('/regresoExam/{idc}/{idperiodo}/{idparcial}', [App\Http\Controllers\PreguntaController::class,'regresoExam']);
+
+//parcial
+Route::get('/periodo',[App\Http\Controllers\Usuarios\DocenteController::class, 'periodo'])->name('/periodo');
+Route::post('/crearParcial/{idc}/{idperiodo}',[App\Http\Controllers\Usuarios\DocenteController::class, 'crearParcial'])->name('/crearParcial');
+
+
+//tema
+Route::get('/vistaTema/{idc}/{idperiodo}/{idparcial}',[App\Http\Controllers\Usuarios\DocenteController::class, 'vistaTema'])->name('/vistaTema');
+Route::post('/crearTema',[App\Http\Controllers\Usuarios\DocenteController::class, 'creartema'])->name('/crearTema');
 
 
 //

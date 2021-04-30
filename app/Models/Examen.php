@@ -6,13 +6,11 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 * Descripción: El Modelo de crear Examen
 * Autor: José Alejandro Cruz Medina 
 * Fecha: 17/03/2021
-
-* Descripción:Generar filtros para califiaciones
-* Funcionalidad: Generar buscador para calificaciones
-* Autor: Isaac Gamaliel Muñiz Amaro
-* Fecha: 17/03/2021
+* Descripción: Vizualizar el curso una que este ya haya sido creado y realizar modificaciones.
+* Funcionalidad: Ver y / o editar el curso, una vez que este ya haya sido creado.
+* Autor: Cabello Salas Juan Carlos.
+* Fecha: 19/03/2020.
 */
-
 
 class Examen extends Eloquent{
 	protected $connection = 'mongodb';
@@ -26,17 +24,18 @@ class Examen extends Eloquent{
      */
     protected $fillable = [
         'idDocente',
+        'idparcial',
+        'nombre_tema',
+        'num_parcial',
+        'idCurso', 
         'titulo',
-        'id_tema',
-        'id_parcial',
-        'id_alumno',
-        'calificacion',
         'horaInicio',
         'horaFin',
+        'calificacion',
         'intentos',
         'fechaInicio',
         'fechaFin',
         'ponderacion',
-        'numero_parcial'
+
     ];
 }
