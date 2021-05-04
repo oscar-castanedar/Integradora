@@ -23,7 +23,7 @@
               <rect x="8" y="15" width="2" height="2" />
             </svg>
           </div>
-          <a class="boton" href="#">Ver</a>
+          <a class="boton" href="{{url('periodo')}}">Ver</a>
       </section>
       
          <section class="servicio">
@@ -41,7 +41,7 @@
             <line x1="16" y1="14" x2="16" y2="17" />
           </svg>
             </div>
-            <a class="boton" href="#">Ver</a>
+            <a class="boton" href="{{url('instituciones')}}">Ver</a>
       </section>
       
           <section class="servicio">
@@ -54,7 +54,7 @@
               <path d="M16 11h6m-3 -3v6" />
             </svg>
           </div>
-          <a class="boton" href="#">Ver</a>
+          <a class="boton" href="{{url('participantes')}}">Ver</a>
           </section>
 
           <section class="servicio">
@@ -69,7 +69,7 @@
                 <line x1="21" y1="6" x2="21" y2="19" />
               </svg>
             </div>
-            <a class="boton" href="#">Ver</a>
+            <a class="boton" href="{{url('carreras')}}">Ver</a>
             </section>
 
             <section class="servicio">

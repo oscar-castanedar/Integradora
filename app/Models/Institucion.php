@@ -14,9 +14,14 @@ class Institucion extends Eloquent
      * Fecha: 17-03-2021
      * @var array
      */
+    protected $connection = 'mongodb';
     protected $collection = 'institucion';
     protected $fillable = [
         'nombre_institucion',
+        'cct',
+        'nombre_director',
+        'telefono',
+        'domicilio'
     ];
 
 }
