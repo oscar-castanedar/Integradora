@@ -5,12 +5,12 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 /**
 * Descripción: El Modelo de crear pregutas para el banco de reactivos.
 * Autor: José Alejandro Cruz Medina 
-* Fecha: 17/03/2021
+* Fecha: 17/03/2021.
 */
 
-class Banco extends Eloquent{
+class Pregunta extends Eloquent{
 	protected $connection = 'mongodb';
-	protected $collection = 'preguntas';
+	protected $collection = 'pregunta';
 
 
     /**
@@ -19,12 +19,11 @@ class Banco extends Eloquent{
      * @var array
      */
     protected $fillable = [
+        'imagen',
+        'idExam',
+        'Nomexamen',
         'descripcion',
-        'tipo',
-        'rutaImagen',
-        'puntaje',
-        'retroalimentacion',
-        'opcionResp',
-
+        'tema',
+        'opciones'
     ];
 }

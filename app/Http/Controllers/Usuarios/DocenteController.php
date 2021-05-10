@@ -54,10 +54,11 @@ class DocenteController extends Controller
             $mis_cursos = Curso::all();
             $asignatura = Asignatura::all();
             $grupos= Grupo::all();
+            $allAct = 'allAct';
 
             
 
-            return view('homeDocente',compact('cursos', 'periodos','periodoSeleccionado', 'temas', 'actividades', 'mis_cursos','asignatura','grupos' ));
+            return view('homeDocente',compact('cursos', 'periodos','allAct','periodoSeleccionado', 'temas', 'actividades', 'mis_cursos','asignatura','grupos' ));
     }
 
     public function verCurso($id){
@@ -108,64 +109,177 @@ class DocenteController extends Controller
       }
 
 
-      public function crearCurso(Request $request){
+    //Función para crear un nuevo curso
+      public function crearCurso(Request $request, $idperiodo){
+        $prueba = "";
         $curso=$request['nombre_curso'];
-        $c=Curso::where('nombre_curso','=',$curso)->get();
-          $consulta = Grupo::all();
-          $asig = Asignatura::all();
-          $a = Auth::user()->email;
-
-        if($request){
+        $consulta = Grupo::all();
+        $asig = Asignatura::all();
+        $temas = Tema::all();
+        $periodo=Periodo::where('_id',$idperiodo)->get();//aqui lo de parcial
+        $a = Auth::user()->email;
+      
             
-                Curso::create([
+                $cursoNew = new Curso([
                   'nombre_curso' =>  $request['nombre_curso'],
                   'asignatura'   =>  $request['asignatura'],
                   'nombre_periodo' =>  $request['nombre_periodo'],
                   'periodo'      =>  $request['periodo'],
                   'grupos'        =>  $request['grupos'],
-                  'descripcion_curso'  =>  $request['descripcion_curso'],
                   'autor_curso' =>  $a,
                   'resumen_curso'=>  $request['resumen_curso'],
                   
                 ]);
+
+                $cursoNew->save();
+
             $temas = Tema::all();
-            $curso=Curso::Where('nombre_curso','=',$curso)->get();
+            $cursos=Curso::find($cursoNew);
+            $parciales = Parcial::where('id_curso',$prueba);
             //$parcials = Parcial::all();
             //$consulta2 = Examen::all();
 
               //retornar vista
-              return view('layouts.docente.curso',['grupos'=>$consulta,'asignatura'=>$asig, 
-              'temas'=>$temas,'cursos'=>$curso]);
-        }
-
-    }
-
-    public function prueba1($id)
-    {
-        //
-        $cursos=Curso::where('_id',$id)->get();
-        $singlExam = "singleExam";
-        $examenes = Examen::all();
+              return view('layouts.docente.parcial',['grupos'=>$consulta,'asignatura'=>$asig, 
+              'temas'=>$temas,'cursos'=>$cursos, 'periodos'=> $periodo, 'parciales'=> $parciales]);
         
-        $parciales = parcial::all();
-        $temas = tema::all();
-        return view('layouts.docente.examen',compact('cursos','temas', 'examenes', 'parciales'));
+
+    } //fin de función para crear curso.
+
+    public function vistaActividad($id, $idP, $idparcial)//esta función nos manda a la vista del examen incluyendo los datos del Curso recibiendo el id que mandamos desde la vista de parciales
+    {  
+        //
+        $cursos=Curso::where('_id',$id)->get();//Aqui extraemos el id del curso y para extraer sus datos pasarlos a examenl)->get();//aqui extraemos los datos del examen
+        $periodos=Periodo::where('_id',$idP)->get();//aqui lo de parcial
+        $temas = Tema::where('id_parcial',$idparcial)->get();
+        $parciales = Parcial::where('_id',$idparcial)->get();
+        return view('layouts.docente.agregarActividad',compact('cursos','temas', 'periodos', 'parciales'));//Aqui regresamos la vista del examen y compactamos todos los datos de las colecciones consultadas
 
     }
 
-    public function regreso($id)
+    //Agregar actividades
+    public function agregarActividad(Request $request){
+      
+      if($request){
+
+          Actividad::create([
+          'nombre_actividad' =>  $request['nombre_actividad'],
+          'nombre_tema' =>  $request['nombre_tema'],
+          'fecha_entrega' =>  $request['fecha_entrega'],
+          'valor' =>  $request['valor'],
+          'descripcion' =>  $request['descripcion']
+          
+        ]); 
+        
+    return back()->with('success', 'Actividad Agregada');
+
+      }
+    }
+
+    //fin agregar actividades
+
+    public function vistaExam($id, $idP, $idparcial)//esta función nos manda a la vista del examen incluyendo los datos del Curso recibiendo el id que mandamos desde la vista de parciales
     {
         //
+        $cursos=Curso::where('_id',$id)->get();//Aqui extraemos el id del curso y para extraer sus datos pasarlos a examen
+        $singlExam = "singleExam";
+        $examenes = Examen::where('idparcial',$idparcial)->get();//aqui extraemos los datos del examen
+        
+        $periodos=Periodo::where('_id',$idP)->get();//aqui lo de parcial
+        $temas = Tema::where('id_parcial',$idparcial)->get();
+        $parciales = Parcial::where('_id',$idparcial)->get();
+        return view('layouts.docente.examen',compact('cursos','temas', 'examenes', 'periodos', 'parciales'));//Aqui regresamos la vista del examen y compactamos todos los datos de las colecciones consultadas
+
+    }
+
+    public function regresoParcial($id, $idP)//esta función nos regresa a la pagina de los parciales con todos los datos necesarios.
+    {
+        //
+         
         $cursos=Curso::where('_id',$id)->get();
+        $parciales=Parcial::where('id_curso',$id)->get();
         $consulta = Grupo::all();
         $asig = Asignatura::all();
         $temas = Tema::all();
+        $periodos=Periodo::where('_id',$idP)->get();//aqui lo de parcial
         
-        $parciales = parcial::all();
         $temas = tema::all();
-        return view('layouts.docente.curso',['grupos'=>$consulta,'asignatura'=>$asig, 
-        'temas'=>$temas,'cursos'=>$cursos]);
+        return view('layouts.docente.parcial',['grupos'=>$consulta,'asignatura'=>$asig, 
+        'temas'=>$temas,'cursos'=>$cursos, 'periodos'=>$periodos, 'parciales'=>$parciales]);
     }
+
+    public function periodo()//esta función nos regresa a la pagina de los parciales con todos los datos necesarios.
+    {
+        //
+       
+        return view('layouts.docente.parcial'); 
+    }
+
+    
+    public function crearParcial(Request $request, $idc, $idperiodo){
+
+      
+      $cursos=Curso::where('_id',$idc)->get();
+      $periodos=Periodo::where('_id',$idperiodo)->get();
+          $consulta = Grupo::all();
+          $asig = Asignatura::all();
+          $temas = Tema::all();
+            
+
+      
+          
+              $parcial = new Parcial([
+                'numero_parcial'  => $request->get('numero_parcial'),
+                'nombre_parcial'     => $request->get('nom_parcial'),
+                'repaso'           => $request->get('repaso'),
+                'id_curso'         => $request->get('id_curso'),
+                'nombre_curso'     => $request->get('nombre_curso'),
+               
+                
+              ]);
+
+         $parcial -> save();
+         $parciales = Parcial::where('id_curso',$idc)->get();
+
+         return view('layouts.docente.parcial',['grupos'=>$consulta,'asignatura'=>$asig, 
+         'temas'=>$temas,'cursos'=>$cursos, 'periodos'=>$periodos, 'parciales'=>$parciales]);
+
+             
+      
+
+  }
+
+  //direcionar a la vista de tema
+  public function vistaTema($idc, $idperiodo, $idparcial) 
+  {
+      //el idc lo acabas de poner? en la vita?
+      $cursos=Curso::where('_id',$idc)->get();
+      $parciales=Parcial::where('_id',$idparcial)->get();
+      $periodos=Periodo::where('_id',$idperiodo)->get();
+      
+      return view('layouts.docente.tema',compact('parciales', 'cursos', 'periodos'));
+  }
+
+
+  //en esta funcion sirve para crear los temas que extraemos los valores desde las vista de tema
+  
+  public function crearTema(Request $request){
+
+    
+    $tema = new Tema([
+      'nombre_tema'        => $request->get('nom_tema'),
+      'descripcion'     => $request->get('descripcion'),
+      'id_curso'        => $request->get('id_curso'),
+      'id_parcial'     => $request->get('id_parcial'),
+     
+      
+    ]);
+
+    $tema -> save();
+
+    return back()->with('success', 'Tema Agregado');
+
+  }
 
 
     //editar curso 
@@ -187,15 +301,23 @@ class DocenteController extends Controller
           ]);
       }
 
+      //Estan son las variables con las que se atrae el id de los parciales, temas, periodos,grupos y asignaturas para poder hacer que se muestren en la pantalla.
       $parcial=Tema::where('id_curso','=',$id)->where('id_parcial','=',1)->get();
       $parcial2=Tema::where('id_curso','=',$id)->where('id_parcial','=',2)->get();
       $parcial3=Tema::where('id_curso','=',$id)->where('id_parcial','=',3)->get();
       $parc=Parcial::where('id_curso','=',$id)->where('numero_parcial','=',1)->get();
       $parc1=Parcial::where('id_curso','=',$id)->where('numero_parcial','=',2)->get();
       $parc2=Parcial::where('id_curso','=',$id)->where('numero_parcial','=',3)->get();
+      $periodos = Periodo::all();
+      $grupos = Grupo::all();
+      $asig = Asignatura::all();
       $uno = AvanceCurso::where('id_curso','=',$id)->where('id_alumno','=',$usuario)->get();
       $cursos=Curso::all()->where('_id',$id);
-      return view('layouts.docente.editarCurso',['cursos'=>$cursos,'uno'=>$uno,'tema'=>$parcial,'tema2'=>$parcial2,'tema3'=>$parcial3,'parcial'=>$parc,'parcial1'=>$parc1,'parcial2'=>$parc2]);
+      return view('layouts.docente.editarCurso',['cursos'=>$cursos,'uno'=>$uno,'tema'=>$parcial,'tema2'=>$parcial2,'tema3'=>$parcial3,'parcial'=>$parc,'parcial1'=>$parc1,'parcial2'=>$parc2, 'periodos'=>$periodos,'asignatura'=>$asig, 'grupos'=>$grupos]);
+  }
+//Función para mostrar el tema del curso
+  public function temasEdit(Request $request){
+
   }
 
 }

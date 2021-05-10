@@ -203,7 +203,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form method="POST" action="{{route('crearCurso')}}" style=" font-weight:bold; padding:15px; border:5px solid #B34F19; margin-top:40px; margin-bottom:40px; text-align:center; font-size:22px; border-radius:10px;" action="https://gifthunterclub.com/ini/register" accept-charset="UTF-8" class="js-validation-signin"><input name="_token" type="hidden" value="ekV4HcXXxN80wMhDQkZDwp0J8eQFR8TDaHMn1l3B">
+      <form method="POST" action="{{route('crearCurso',['idperiodo'=>$periodo->id])}}" style=" font-weight:bold; padding:15px; border:5px solid #B34F19; margin-top:40px; margin-bottom:40px; text-align:center; font-size:22px; border-radius:10px;" action="https://gifthunterclub.com/ini/register" accept-charset="UTF-8" class="js-validation-signin"><input name="_token" type="hidden" value="ekV4HcXXxN80wMhDQkZDwp0J8eQFR8TDaHMn1l3B">
         @csrf
           <div class="row form-group ">
           <div class="col-lg-6">
@@ -224,29 +224,29 @@
               <option selected value="">Seleccionar Periodo</option>
               @foreach($periodos as $periodo)
         @if($periodo->status_periodo == false)
-        <option value="{{$periodo->nombre_periodo}}">{{$periodo->nombre_periodo}}</option>
+        <option value="{{$periodo->nombre_periodo}}">{{$periodo->nombre_periodo}} ({{$periodo->fecha_inicio}} <-> {{$periodo->fecha_fin}})</option>
         @endif
-      @endforeach
+        @endforeach
             </select>
           </div>
           </div>
           <div class="col-lg-5">
           <div class=" "></div>
           <div class="form-material floating">
-            <label for="exampleFormControlSelect1">Asignaturas</label>
+            <label for="exampleFormControlSelect1">Asignatura</label>
               <select class="form-control" value=""  name="asignatura" id="exampleFormControlSelect1">
                 <option selected value="">Seleccionar Asignatura</option>
                 @foreach($asignatura as $as)
-                  <option selected value="{{$as->nombre_asignatura}}">{{$as->nombre_asignatura}}</option>
+                  <option selected value="">{{$as->nombre_asignatura}}</option>
                 @endforeach
               </select>
           </div>
           <div class="form-material floating">
-          <label for="exampleFormControlSelect1">Grupos</label>
+          <label for="exampleFormControlSelect1">Grupo</label>
           <select class="form-control" value="" name="grupos[]" id="exampleFormControlSelect1" value="">
-            <option selected value="">Seleccionar Grupos</option>
+            <option selected value="">Seleccionar el Grupo</option>
             @foreach($grupos as $gr)
-              <option selected value="{{$gr->nombre_grupo}}">{{$gr->nombre_grupo}}</option>
+              <option selected value="">{{$gr->nombre_grupo}}</option>
              @endforeach
           </select>
           </div>
@@ -259,23 +259,19 @@
             <label for="exampleFormControlTextarea2"></label>
               <textarea class="form-control" name="resumen_curso" id="exampleFormControlTextarea1" value="" rows="3" placeholder="Resumen del curso"></textarea>
           </div> 
-          <div class="form-group">
-            <a>Descripción del curso</a>
-            <label for="exampleFormControlTextarea3"></label>
-              <textarea class="form-control" name="descripcion_curso" id="exampleFormControlTextarea2"  value="" rows="3" placeholder="Temas del curso "></textarea>
-          </div>      
+               
           </div>    
           </div>
           <div class="form-group">
-                                <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary" onclick="return confirm('¿Confirmas que los datos son correctos?')">Agregar</button>
-                                </div>
-                            </div>
+          <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary" onclick="return confirm('¿Confirmas que los datos son correctos?')">Agregar</button>
+          </div>
+          </div>
 <!-- ************************************************************************************************************* -->
       </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" href="{{ route('Curso') }}" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-secondary"  data-dismiss="modal">Cerrar</button>
         
       </div>
     </div>

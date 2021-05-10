@@ -14,29 +14,38 @@
             {{session('success')}}
         </div>
         @endif
+        <!--Aqui atilizamos un foreach para poder extraer los datos de curso para poder mandar su id cuando el el usuario regrese a la página de examen y nos muestre los datos del curso-->
         @foreach($cursos as $curso) 
+        
       <div id="boton" class="boton" >
-            <a href="{{url('/examen',['idc'=>$curso->id])}}"><button type="button" name="btnvisualizarPre" hrfe class="btn btn-warning">Regresar</button></a>
+      @foreach($periodos as $periodo) 
+        @foreach($parciales as $parcial)
+            <a href="{{url('/regresoExam',['idc'=>$curso->id,'idparcial'=>$parcial->id, 'idperiodo'=>$periodo->id])}}"><button type="button" name="btnvisualizarPre" hrfe class="btn btn-warning">Regresar</button></a>
+            @endforeach  
+   @endforeach 
+   
       </div>
         <br>
     <div class="card" id="cardOri">
    
 
     <label for="floatingTextarea2" >Nombre del Examen: </label>
-   
+   <!-- Aquí se muestra el nombrey el id del examen que seleccionamos en la pagina del examen y los pasamos a unos inputs para poderlos extraer y insertalos a la base de datos  -->
     @foreach($examenes as $examen) 
-    <form   action="{{url('/preguntas',['id'=>$curso->id])}}" method="post" enctype="multipart/form-data">
+    <form   action="{{url('/crearPreguntas')}}" method="post" enctype="multipart/form-data">
     @csrf
     <input class="form-control" readonly="readonly" type="text" value="{{$examen->titulo}}" id="nombre" name="Nomexamen" aria-label="default input example">
     <input class="form-control" readonly="readonly" type="hidden" value="{{$examen->id}}" id="idExam" name="idExam" aria-label="default input example">
     @endforeach  
     @endforeach  
+     
     <br><br>
     
     <center><label>Seleccione el tema de la preguntunta: </label></center>
     
     <select class="form-select" name="tema" id="tema" value="0" aria-label="Default select example" >
     <option selected value="0">Temas</option>
+    <!--Aquí mostramos todos los temas que existen en la colleccion de temas-->
     @foreach($temas as $tema)
     <option value="{{$tema->nombre_tema}}">{{$tema->nombre_tema}}</option>
    
@@ -56,7 +65,7 @@
 
    
     <div class="form-floating">
-      <textarea class="form-control" name="descripcion" placeholder="Leave a comment here"id="pregunta" name="pregunta" style="height: 100px" required>Responda la Pregunta?</textarea>
+      <textarea class="form-control" name="descripcion" id="descripcion" style="height: 100px" required>Responda la Pregunta?</textarea>
     </div><br>
     <div class="custom-file" id="customFile" lang="es">
           <input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name = "imagen">      
@@ -74,9 +83,10 @@
 
     <center>
     <label for="floatingTextarea2">Calificación:</label>  
-    <select class="form-select" name="puntaje1" id="puntaje1" value="0" aria-label="Default select example" required>
-    <option selected value="0">Ninguna</option>
-    <option value="50">50%</option>
+    <select class="form-select" name="puntaje1" id="puntaje1"  required>
+    <option  ></option>
+    <option value="0">Ninguna</option>
+    <option value="50" >50%</option>
     <option value="100">100%</option>
     </select>
     </center>
@@ -98,9 +108,10 @@
 
     <center>
     <label for="floatingTextarea2">Calificación:</label>  
-    <select class="form-select" name="puntaje2" id="puntaje2" aria-label="Default select example" required>
-    <option selected value="0">Ninguna</option>
-    <option value="50">50%</option>
+    <select class="form-select" name="puntaje2" id="puntaje2" required>
+    <option  ></option>
+    <option value="0">Ninguna</option>
+    <option value="50" >50%</option>
     <option value="100">100%</option>
     </select>
     </center>
@@ -122,13 +133,14 @@
 
     <center>
     <label for="floatingTextarea2">Calificación:</label>  
-    <select class="form-select" name="puntaje3"  id="puntaje3" aria-label="Default select example" required>
-    
-    <option selected value="0">Ninguna</option >
-    <option value="50">50%</option>
+    <select class="form-select" name="puntaje3" id="puntaje3" required>
+    <option  ></option>
+    <option value="0">Ninguna</option>
+    <option value="50" >50%</option>
     <option value="100">100%</option>
     </select>
     </center>
+
 
     <label for="floatingTextarea2">Retroalimentación:</label> 
     <br><input class="form-control" name="retroalimentacion3" type="text" placeholder="" aria-label="default input example">
@@ -137,14 +149,20 @@
     </div> 
 
     </div>
+ 
+    
+    
+   
 
     <div id="boton">
-    <button type="sumitd" id="btnlisto" name="btnlisto"  class="btn btn-dark">Listo</button>
+    <button type="botton" id="btnlisto" name="btnlisto" onclick="calculateSumListener();" class="btn btn-dark">Listo</button>
     </div>
 
 
     </form>
     </div>
+
+    
 @endsection
 
 @section('script')

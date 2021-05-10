@@ -15,5 +15,8 @@ class Actividad extends Eloquent{
     protected $fillable = [
         'nombre_tema',
         'nombre_actividad',
+        'fecha_entrega',
+        'valor',
+        'descripcion'
     ];
 }

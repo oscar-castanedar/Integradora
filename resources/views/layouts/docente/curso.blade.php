@@ -17,14 +17,16 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="flush-headingOne">
+                  <br>
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                       Parcial 1
                     </button>
+                    <br>
                   </h2>
                   <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary me-md-2" type="button">Agregar Actividad</button>
+                    <a class="nav-link" href="{{ route('agregarActividad') }}" > <button class="btn btn-primary me-md-2" type="button">Agregar Actividad</button></a>
                         @foreach($cursos as $curso )
                         <a class="nav-link" href="{{url('crearExam',['id'=>$curso->id])}}"> <button class="btn btn-primary" type="button">Agregar Examen</button></a>
                         @endforeach

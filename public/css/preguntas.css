@@ -1,0 +1,89 @@
+*{
+   
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+  
+      
+     
+    }
+    #cuerpo{
+      background: aliceblue;
+      padding-top: 5px;
+      
+    }
+  
+    #nombre{
+      width: 200px;
+    }
+  
+    #cardOri{
+      background: #dfc6b2 ;
+      padding: 10px;
+    }
+    #respuestas{
+      background: #ADD8E6;
+    }
+    
+   
+    #tema{
+      width: auto;
+      
+      background-color: #c3dee7;
+      text-align: center;
+      margin-left: auto;
+     margin-right: auto;
+     margin-top: 5px;
+  
+     
+    }
+     #puntaje1{
+          width: 200px;
+          margin-top: 10px;
+     }
+     #puntaje2{
+      width: 200px;
+      margin-top: 10px;
+ }
+ #puntaje3{
+  width: 200px;
+  margin-top: 10px;
+}
+    #preguntas{
+      width: 90%;
+      text-align: center;
+      align-items: center;
+      margin-top: 10px;
+     
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+   
+  
+  
+  
+  .form-control {
+   border-radius: 5px;
+  }
+  
+  
+  #boton{
+  text-align: left;
+  padding-top: 10px;
+  }
+  
+  button{
+   text-align: right;
+  }
+  
+  #titulo{
+  padding-right: 400px;
+  text-align: right;
+  
+  
+  }
+  
+  
+  .form-select{
+   width: 200px;
+   display: inline-block;
+  }

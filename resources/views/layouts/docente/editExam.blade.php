@@ -16,9 +16,13 @@
 </div>
 @endif
 @foreach($cursos as $curso) 
+    @foreach($periodos as $periodo) 
+    @foreach($parciales as $parcial)
       <div id="boton" class="boton" >
-            <a href="{{url('/examen',['idc'=>$curso->id])}}"><button type="button" name="btnvisualizarPre" hrfe class="btn btn-warning">Regresar</button></a>
+      <a href="{{url('/regresoExam',['idc'=>$curso->id,'idparcial'=>$parcial->id, 'idperiodo'=>$periodo->id])}}"><button type="button" name="btnvisualizarPre" hrfe class="btn btn-warning">Regresar</button></a>
       </div>
+      @endforeach
+      @endforeach
       @endforeach
     <div clas = "row justify-content-center">
         <div class = "col">
@@ -66,12 +70,13 @@
         <th scope="row">
         <div class="parcial">
         <label>Núm.Parcial</label>
-            <select class="form-select" name="idParcial" id="idParcial" value="0" aria-label="Default select example"  required>
-                 <option selected value="{{$singlExam->num_parcial}}">{{$singlExam->num_parcial}}</option>
+        <select class="form-select" name="nombre_tema" id="nombre_tema" value="0" aria-label="Default select example"  required>
+        <option>{{$singlExam->nombre_tema}}</option>
+                 <option value="0">Temas</option>
                
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+            @foreach($temas as $tema)
+                    <option value="{{$tema->nombre_tema}}">{{$tema->nombre_tema}}</option>
+                    @endforeach
                    
             </select>
             </div> 
