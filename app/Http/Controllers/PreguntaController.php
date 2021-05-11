@@ -29,6 +29,19 @@ class PreguntaController extends Controller
     
     
         $getfile = $request['imagen'];//aqui extraemos el contenido del input de subir imagen.
+<<<<<<< HEAD
+=======
+
+        $puntaje1 = $request['puntaje1'];
+        $puntaje2 = $request['puntaje2'];
+        $puntaje3 = $request['puntaje3'];
+
+        if($puntaje1 == "0" And $puntaje2 == "0"){
+            if($puntaje3 == "0"){
+                return back()->with('success', 'Chales no se inserto..');
+            }
+        }
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
         //echo($getfile);
 
        

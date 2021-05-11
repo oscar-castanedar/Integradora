@@ -106,7 +106,11 @@ window.calculateSumListener = function calculateSumListener() {
     
   }else{
     alert('El total del puntaje no suma el 100% por lo cuál su pregunta no será insertada');
+<<<<<<< HEAD
     window.history.go(-1);
+=======
+    window.history.go(0);
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
   }
 
 

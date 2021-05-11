@@ -109,7 +109,11 @@ class DocenteController extends Controller
       }
 
 
+<<<<<<< HEAD
     //Función para crear un nuevo curso
+=======
+      
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
       public function crearCurso(Request $request, $idperiodo){
         $prueba = "";
         $curso=$request['nombre_curso'];
@@ -117,7 +121,11 @@ class DocenteController extends Controller
         $asig = Asignatura::all();
         $temas = Tema::all();
         $periodo=Periodo::where('_id',$idperiodo)->get();//aqui lo de parcial
+<<<<<<< HEAD
         $a = Auth::user()->email;
+=======
+
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
       
             
                 $cursoNew = new Curso([
@@ -126,7 +134,12 @@ class DocenteController extends Controller
                   'nombre_periodo' =>  $request['nombre_periodo'],
                   'periodo'      =>  $request['periodo'],
                   'grupos'        =>  $request['grupos'],
+<<<<<<< HEAD
                   'autor_curso' =>  $a,
+=======
+                  'descripcion_curso'  =>  $request['descripcion_curso'],
+                  'autor_curso' =>  $request['autor_curso'],
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
                   'resumen_curso'=>  $request['resumen_curso'],
                   
                 ]);
@@ -143,6 +156,7 @@ class DocenteController extends Controller
               return view('layouts.docente.parcial',['grupos'=>$consulta,'asignatura'=>$asig, 
               'temas'=>$temas,'cursos'=>$cursos, 'periodos'=> $periodo, 'parciales'=> $parciales]);
         
+<<<<<<< HEAD
 
     } //fin de función para crear curso.
 
@@ -161,6 +175,8 @@ class DocenteController extends Controller
     public function agregarActividad(Request $request){
       
       if($request){
+=======
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
 
           Actividad::create([
           'nombre_actividad' =>  $request['nombre_actividad'],
@@ -176,8 +192,11 @@ class DocenteController extends Controller
       }
     }
 
+<<<<<<< HEAD
     //fin agregar actividades
 
+=======
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
     public function vistaExam($id, $idP, $idparcial)//esta función nos manda a la vista del examen incluyendo los datos del Curso recibiendo el id que mandamos desde la vista de parciales
     {
         //
@@ -206,6 +225,7 @@ class DocenteController extends Controller
         $temas = tema::all();
         return view('layouts.docente.parcial',['grupos'=>$consulta,'asignatura'=>$asig, 
         'temas'=>$temas,'cursos'=>$cursos, 'periodos'=>$periodos, 'parciales'=>$parciales]);
+<<<<<<< HEAD
     }
 
     public function periodo()//esta función nos regresa a la pagina de los parciales con todos los datos necesarios.
@@ -215,6 +235,17 @@ class DocenteController extends Controller
         return view('layouts.docente.parcial'); 
     }
 
+=======
+    }
+
+    public function periodo()//esta función nos regresa a la pagina de los parciales con todos los datos necesarios.
+    {
+        //
+       
+        return view('layouts.docente.parcial'); 
+    }
+
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
     
     public function crearParcial(Request $request, $idc, $idperiodo){
 
@@ -244,7 +275,11 @@ class DocenteController extends Controller
          return view('layouts.docente.parcial',['grupos'=>$consulta,'asignatura'=>$asig, 
          'temas'=>$temas,'cursos'=>$cursos, 'periodos'=>$periodos, 'parciales'=>$parciales]);
 
+<<<<<<< HEAD
              
+=======
+            
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
       
 
   }

@@ -53,8 +53,22 @@
           
      
             <div class="form-material floating">
+<<<<<<< HEAD
               <label for="exampleFormControlSelect1">id del curso</label>
               <input type="text" class="form-control" id="id_curso" name="id_curso" value="{{$curso->id}}" placeholder="{{$curso->id}}">
+=======
+             
+              <input type="hidden" class="form-control" id="id_curso" name="id_curso" value="{{$curso->id}}" placeholder="{{$curso->id}}">
+              
+            </div>
+
+            <div class="col-lg-5">
+          
+     
+            <div class="form-material floating">
+              <label>Nombre de Curso</label>
+              <input type="text" class="form-control" id="" name="" value="{{$curso->nombre_curso}}" readonly="readonly">
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
               
             </div>
             @endforeach
@@ -63,8 +77,13 @@
          
           <div class="col-lg-5">
             <div class="form-material floating">
+<<<<<<< HEAD
               <label for="exampleFormControlSelect1">id parcial</label>
               <input type="text" class="form-control" id="id_parcial" name="id_parcial" value="{{$parcial->id}}" placeholder="">
+=======
+              
+              <input type="hidden" class="form-control" id="id_parcial" name="id_parcial" value="{{$parcial->id}}" placeholder="">
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
               
             </div>
  @endforeach

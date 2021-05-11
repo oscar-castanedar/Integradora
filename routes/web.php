@@ -95,6 +95,10 @@ Route::get('/agregarActividad',[App\Http\Controllers\Usuarios\DocenteController:
 Route::get('/vistaActividad/{id}/{idP}/{idparcial}',[App\Http\Controllers\Usuarios\DocenteController::class, 'vistaActividad'])->name('/vistaActividad');
 Route::get('/agregarExTr',[App\Http\Controllers\Usuarios\DocenteController::class, 'agregarExTr'])->name('agregarExTr');
 Route::post('/crearCurso/{idperiodo}',[App\Http\Controllers\Usuarios\DocenteController::class, 'crearCurso'])->name('crearCurso');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
 Route::get('/vistaExam/{id}/{idP}/{idparcial}',[App\Http\Controllers\Usuarios\DocenteController::class, 'vistaExam'])->name('vistaExam');//CON ESTA RUTA MANDAMOS A LA VISTA PRINCIPAL DEL EXAMEN INCLUYENDO EL ID DEL CURSO
 Route::get('/regreso/{id}/{idP}',[App\Http\Controllers\Usuarios\DocenteController::class, 'regresoParcial'])->name('/regreso');
 
@@ -130,3 +134,31 @@ Route::get('/status/update', [DocenteController::class, 'updateStatus'])->name('
 Route::get('/status-curso/{id}',[App\Http\Controllers\Usuarios\DocenteController::class, 'statuscurso'])->name('status-curso');
 Route::get('/status-curso1/{id}',[App\Http\Controllers\Usuarios\DocenteController::class, 'statuscurso1'])->name('status-curso1');
 
+//rutas para periodos y sus acciones
+Route::get('/periodo',[App\Http\Controllers\Usuarios\AdminController::class,'periodo'])->name('periodo');
+Route::post('/periodo/savePeriodo',[App\Http\Controllers\Usuarios\AdminController::class, 'savePeriodo'])->name('savePeriodo');
+Route::get('/editPeriodo/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'edit'])->name('editPeriodo');
+Route::post('/updatePeriodo/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'updatePeriodo'])->name('updatePeriodo');
+Route::get('/status-update/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'statusupdate'])->name('status-update');
+Route::get('/status-update1/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'statusupdate1'])->name('status-update1');
+Route::get('/deletePeriodo/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'delete'])->name('deletePeriodo');
+
+
+//rutas para carreras y sus acciones
+Route::get('/carreras',[App\Http\Controllers\Usuarios\AdminController::class,'carreras'])->name('carreras');
+Route::post('/carreras/saveCarrera',[App\Http\Controllers\Usuarios\AdminController::class, 'saveCarrera'])->name('saveCarrera');
+Route::get('/editCarreras/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'edit3'])->name('editCarreras');
+Route::post('/updateCarreras/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'updateCarreras'])->name('updateCarreras');
+Route::get('/deleteCarreras/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'delete3'])->name('deleteCarreras');
+
+
+//rutas para instituciones y sus acciones
+Route::get('/instituciones',[App\Http\Controllers\Usuarios\AdminController::class,'instituciones'])->name('instituciones');
+Route::post('/instituciones/saveInstitucion',[App\Http\Controllers\Usuarios\AdminController::class, 'saveInstitucion'])->name('saveInstitucion');
+Route::get('/editInstitucion/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'edit2'])->name('editInstitucion');
+Route::post('/updateInstitucion/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'updateInstitucion'])->name('updateInstitucion');
+Route::get('/deleteInstitucion/{id}',[App\Http\Controllers\Usuarios\AdminController::class, 'delete2'])->name('deleteInstitucion');
+
+
+//rutas para participantes
+Route::get('/participantes',[App\Http\Controllers\Usuarios\AdminController::class,'participantes'])->name('participantes');

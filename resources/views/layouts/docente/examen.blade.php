@@ -18,7 +18,11 @@
 <!--Aquí pasamos la variable de curso que nos ayuda a pasar los datos del curso -->
     
     @foreach($cursos as $curso) 
+<<<<<<< HEAD
     @foreach($periodos as $periodo)  
+=======
+    @foreach($periodos as $periodo) 
+>>>>>>> 0fadfd897567a1decc48d1ac6ba1dd188d7d928e
     @foreach($parciales as $parcial)
       <div id="boton" class="boton" >
             <a href="{{url('/regreso',['idc'=>$curso->id, 'idp'=>$periodo->id])}}"><button type="button" name="btnvisualizarPre" hrfe class="btn btn-danger">Regresar</button></a>
@@ -36,7 +40,7 @@
         <thead>
             <tr>
             <th scope="col">
-            <h2>Crear Examén</h2>
+            <h2>Crear Exámen</h2>
             </th>
             <th scope="col">
               
